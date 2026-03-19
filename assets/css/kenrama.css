@@ -1,0 +1,1346 @@
+/**
+ * Kenrama Education Centre — Brand Theme v2
+ * Modern + warm. Gold, Green, Maroon, Grey — all present and balanced.
+ * Headings: clean serif feel. Body: readable, parent-friendly.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito+Sans:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800&display=swap');
+
+/* ============================================================
+   BRAND COLOUR PALETTE
+   ============================================================ */
+:root {
+  /* Core brand */
+  --kec-gold:        #F4C430;
+  --kec-gold-light:  #FFD966;
+  --kec-gold-dim:    #b8921f;
+  --kec-green:       #0B6B3A;
+  --kec-green-mid:   #0e8a4b;
+  --kec-green-dark:  #074d2a;
+  --kec-maroon:      #7A1E2C;
+  --kec-maroon-mid:  #9b2638;
+  --kec-maroon-light:#c0303f;
+  --kec-grey:        #6C757D;
+  --kec-grey-light:  #9aa3ab;
+  --kec-grey-dark:   #3d4349;
+
+  /* Backgrounds */
+  --kec-bg:          #06130c;
+  --kec-surface:     #0a1f14;
+  --kec-surface2:    #0f2d1c;
+  --kec-surface3:    #162e1f;   /* maroon-tinted surface */
+
+  /* Text */
+  --kec-text:        #eef5f0;
+  --kec-text-dim:    rgba(238, 245, 240, 0.68);
+  --kec-text-muted:  rgba(238, 245, 240, 0.42);
+
+  /* Template overrides */
+  --background-color:              #06130c;
+  --default-color:                 #eef5f0;
+  --heading-color:                 #F4C430;
+  --accent-color:                  #F4C430;
+  --surface-color:                 #0a1f14;
+  --contrast-color:                #06130c;
+  --nav-color:                     rgba(238,245,240,0.75);
+  --nav-hover-color:               #F4C430;
+  --nav-mobile-background-color:   #0a1f14;
+  --nav-dropdown-background-color: #0a1f14;
+  --nav-dropdown-color:            #eef5f0;
+  --nav-dropdown-hover-color:      #F4C430;
+
+  /* Fonts */
+  --default-font:  'Nunito Sans', sans-serif;
+  --heading-font:  'Playfair Display', Georgia, serif;
+  --nav-font:      'Nunito Sans', sans-serif;
+  --tech-font:     'Orbitron', sans-serif;  /* for badges/labels only */
+}
+
+/* ============================================================
+   GLOBAL BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--kec-bg);
+  color: var(--kec-text);
+  font-family: var(--default-font);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Subtle grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11, 107, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 107, 58, 0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--kec-gold);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--kec-text-dim);
+}
+
+a {
+  color: var(--kec-gold);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+a:hover { color: var(--kec-gold-light); }
+
+/* Utility label (small caps badge style — only Orbitron used here) */
+.kec-label {
+  display: inline-block;
+  font-family: var(--tech-font);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kec-green-mid);
+  border-left: 3px solid var(--kec-green);
+  padding-left: 10px;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+
+.light-background {
+  --background-color: #0a1f14;
+  --surface-color:    #0f2d1c;
+}
+.dark-background {
+  --background-color: #06130c;
+  --default-color:    #eef5f0;
+  --heading-color:    #F4C430;
+  --surface-color:    #0a1f14;
+}
+
+/* ============================================================
+   HEADER / NAVBAR
+   ============================================================ */
+.header {
+  background: rgba(6, 19, 12, 0.93) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(244, 196, 48, 0.18);
+  padding: 6px 0 !important;
+  z-index: 9999;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.55),
+    0 1px 0 rgba(122, 30, 44, 0.25) inset;   /* maroon under-glow */
+}
+
+.scrolled .header, .header.scrolled {
+  background: rgba(6, 19, 12, 0.99) !important;
+  border-bottom-color: rgba(244, 196, 48, 0.35);
+  box-shadow:
+    0 6px 36px rgba(0,0,0,0.7),
+    0 1px 0 rgba(122, 30, 44, 0.3) inset;
+}
+
+/* ── LOGO ────────────────────────────────────────────────── */
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+/* BIG commanding logo */
+.header .logo img {
+  height: 72px !important;
+  max-height: 72px !important;
+  width: auto;
+  filter:
+    drop-shadow(0 0 10px rgba(244, 196, 48, 0.55))
+    drop-shadow(0 0 24px rgba(11, 107, 58, 0.35));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+.header .logo img:hover {
+  filter:
+    drop-shadow(0 0 18px rgba(244, 196, 48, 0.9))
+    drop-shadow(0 0 36px rgba(11, 107, 58, 0.5));
+  transform: scale(1.04);
+}
+
+/* School name text next to logo */
+.header .logo .sitename {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--kec-gold) !important;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 18px rgba(244, 196, 48, 0.4);
+  margin: 0;
+  line-height: 1.15;
+}
+.header .logo .sitename small {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.58em;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  color: rgba(244, 196, 48, 0.55) !important;
+  display: block;
+}
+
+.header .logo i { display: none; }
+
+/* ── CALL BUTTON ─────────────────────────────────────────── */
+.header .btn-call {
+  background: linear-gradient(135deg, var(--kec-gold), var(--kec-gold-dim));
+  color: var(--kec-green-dark) !important;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 9px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  border: none;
+  text-decoration: none;
+  transition: all 0.28s ease;
+  white-space: nowrap;
+}
+.header .btn-call:hover {
+  background: linear-gradient(135deg, var(--kec-gold-light), var(--kec-gold));
+  box-shadow: 0 0 22px rgba(244, 196, 48, 0.45);
+  transform: translateY(-1px);
+  color: var(--kec-green-dark) !important;
+}
+
+/* ── DESKTOP NAV ─────────────────────────────────────────── */
+@media (min-width: 1200px) {
+  .navmenu a, .navmenu a:focus {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
+    color: rgba(238, 245, 240, 0.8) !important;
+    padding: 8px 14px;
+    position: relative;
+    transition: color 0.25s ease;
+  }
+  .navmenu a::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: var(--kec-gold);
+    transition: width 0.28s ease;
+    border-radius: 2px;
+  }
+  .navmenu a:hover::after,
+  .navmenu .active::after { width: 70%; }
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus { color: var(--kec-gold) !important; }
+
+  .navmenu .dropdown ul {
+    background: rgba(6, 19, 12, 0.98) !important;
+    border: 1px solid rgba(244, 196, 48, 0.15);
+    border-top: 2px solid var(--kec-gold);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.65);
+    border-radius: 0 0 6px 6px;
+  }
+  .navmenu .dropdown ul a {
+    font-size: 0.82rem !important;
+    padding: 9px 18px !important;
+    border-bottom: 1px solid rgba(244, 196, 48, 0.06);
+  }
+}
+
+/* ── MOBILE NAV ──────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .header .logo img {
+    height: 56px !important;
+    max-height: 56px !important;
+  }
+  body.mobile-nav-active .navmenu {
+    position: fixed;
+    top: 0; right: 0;
+    width: 290px;
+    height: 100vh;
+    background: rgba(6,19,12,0.99) !important;
+    border-left: 1px solid rgba(244, 196, 48, 0.18);
+    padding: 90px 24px 24px;
+    overflow-y: auto;
+    z-index: 9998;
+    box-shadow: -12px 0 48px rgba(0,0,0,0.7);
+  }
+  body.mobile-nav-active .navmenu ul { display: block !important; }
+  body.mobile-nav-active .mobile-nav-toggle {
+    position: fixed; top: 18px; right: 20px; z-index: 9999;
+  }
+  .navmenu a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(238,245,240,0.82) !important;
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(244,196,48,0.08);
+  }
+  .navmenu a:hover, .navmenu .active { color: var(--kec-gold) !important; }
+  .mobile-nav-toggle { color: var(--kec-gold) !important; font-size: 1.5rem; }
+  .navmenu .dropdown ul {
+    display: none;
+    background: rgba(10,31,20,0.95) !important;
+    border-left: 2px solid rgba(244,196,48,0.2);
+    margin-left: 12px;
+    padding: 4px 0;
+  }
+  .navmenu .dropdown.active > ul,
+  .navmenu .dropdown ul.dropdown-active { display: block !important; }
+}
+
+/* ============================================================
+   HERO SECTION — School building background
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 90px;
+}
+
+/* School admin block background image — real photo feel via unsplash */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+}
+
+/* Dark overlay so text is readable — layered: dark green base + maroon accent at bottom */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(6, 19, 12, 0.88) 0%,
+      rgba(10, 31, 20, 0.82) 40%,
+      rgba(60, 10, 18, 0.55) 100%
+    );
+}
+
+/* Gold + green gradient rim at bottom */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--kec-green), var(--kec-gold), var(--kec-maroon));
+  z-index: 5;
+}
+
+.hero .container { position: relative; z-index: 3; }
+
+/* ── HERO TYPOGRAPHY ─────────────────────────────────────── */
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--kec-gold);
+  text-shadow:
+    0 2px 12px rgba(0,0,0,0.6),
+    0 0 40px rgba(244, 196, 48, 0.25);
+  margin-bottom: 0.4rem;
+}
+
+.hero .school-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6ee89a;
+  margin-bottom: 1.5rem;
+}
+
+.hero p.lead-text {
+  font-size: 1.05rem;
+  color: rgba(238, 245, 240, 0.82);
+  max-width: 520px;
+  line-height: 1.85;
+}
+
+/* ── HERO BUTTONS ────────────────────────────────────────── */
+.btn-primary-kec {
+  background: linear-gradient(135deg, var(--kec-gold), var(--kec-gold-dim));
+  color: var(--kec-green-dark) !important;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary-kec::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+.btn-primary-kec:hover::before { left: 100%; }
+.btn-primary-kec:hover {
+  box-shadow: 0 6px 28px rgba(244, 196, 48, 0.5);
+  transform: translateY(-2px);
+  color: var(--kec-green-dark) !important;
+}
+
+.btn-outline-kec {
+  border: 2px solid rgba(244, 196, 48, 0.6);
+  color: var(--kec-gold) !important;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 11px 28px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: inline-block;
+  background: rgba(244, 196, 48, 0.06);
+  transition: all 0.28s ease;
+}
+.btn-outline-kec:hover {
+  background: rgba(244, 196, 48, 0.14);
+  border-color: var(--kec-gold);
+  box-shadow: 0 4px 20px rgba(244, 196, 48, 0.2);
+  color: var(--kec-gold) !important;
+  transform: translateY(-2px);
+}
+
+/* ── HERO STATS BAR ─────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  gap: 0;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  border: 1px solid rgba(244, 196, 48, 0.15);
+  background: rgba(6, 19, 12, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 520px;
+}
+.hero-stat {
+  flex: 1;
+  text-align: center;
+  padding: 14px 12px;
+  border-right: 1px solid rgba(244, 196, 48, 0.1);
+  min-width: 90px;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat .number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--kec-gold);
+  line-height: 1;
+  display: block;
+}
+.hero-stat .label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kec-text-muted);
+  margin-top: 3px;
+  display: block;
+}
+
+/* ── HERO PANEL (right side) ─────────────────────────────── */
+.hero-panel {
+  background: rgba(6, 19, 12, 0.82);
+  border: 1px solid rgba(244, 196, 48, 0.2);
+  border-top: 3px solid var(--kec-gold);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  backdrop-filter: blur(14px);
+  position: relative;
+}
+
+/* Maroon accent stripe on left */
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 0;
+  width: 3px;
+  height: calc(100% - 3px);
+  background: linear-gradient(180deg, var(--kec-maroon), transparent);
+}
+
+.panel-badge {
+  font-family: var(--tech-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--kec-green-mid);
+  border: 1px solid rgba(11,107,58,0.4);
+  padding: 3px 10px;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.panel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(244, 196, 48, 0.07);
+}
+.panel-item:last-child { border-bottom: none; }
+.panel-item .pi-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: rgba(244, 196, 48, 0.08);
+  border: 1px solid rgba(244, 196, 48, 0.18);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+  color: var(--kec-gold);
+}
+.panel-item .pi-label {
+  font-size: 0.7rem;
+  color: var(--kec-text-muted);
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.2;
+}
+.panel-item .pi-value {
+  font-size: 0.88rem;
+  color: var(--kec-text);
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   PAGE TITLE (inner pages)
+   ============================================================ */
+.page-title {
+  background:
+    linear-gradient(160deg, #06130c 0%, #0a1f14 60%, #130814 100%) !important;
+  border-bottom: 1px solid rgba(244, 196, 48, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+.page-title::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11,107,58,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,107,58,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+/* maroon bar left */
+.page-title::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--kec-maroon), var(--kec-gold), var(--kec-green));
+}
+.page-title .heading { padding: 64px 0 44px; }
+.page-title h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--kec-gold);
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+.page-title p { color: var(--kec-text-dim); font-size: 1rem; }
+.page-title .breadcrumbs {
+  background: rgba(6,19,12,0.6);
+  border-top: 1px solid rgba(244,196,48,0.08);
+  padding: 10px 0;
+}
+.page-title .breadcrumbs a { color: var(--kec-gold); font-size: 0.82rem; }
+.page-title .breadcrumbs .current { color: var(--kec-text-muted); font-size: 0.82rem; }
+.page-title .breadcrumbs ol li + li::before { color: var(--kec-grey); }
+
+/* ============================================================
+   SECTION GENERAL
+   ============================================================ */
+section { position: relative; z-index: 1; }
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--kec-green) 0%,
+    var(--kec-gold) 40%,
+    var(--kec-maroon) 75%,
+    rgba(108,117,125,0.3) 100%
+  );
+  margin: 0;
+}
+
+/* ============================================================
+   COLOUR-CODED ACCENT BARS on cards
+   — top bar cycles: gold / maroon / green / grey
+   ============================================================ */
+.accent-gold  { border-top: 3px solid var(--kec-gold)   !important; }
+.accent-maroon{ border-top: 3px solid var(--kec-maroon)  !important; }
+.accent-green { border-top: 3px solid var(--kec-green)   !important; }
+.accent-grey  { border-top: 3px solid var(--kec-grey)    !important; }
+
+/* ============================================================
+   CARDS / SURFACES
+   ============================================================ */
+.kec-card {
+  background: rgba(10, 31, 20, 0.72);
+  border: 1px solid rgba(244, 196, 48, 0.12);
+  border-radius: 4px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.kec-card:hover {
+  border-color: rgba(244, 196, 48, 0.3);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45), 0 0 30px rgba(244,196,48,0.05);
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   FACILITY CARDS (homepage + facilities page)
+   ============================================================ */
+.facility-card {
+  background: rgba(10, 31, 20, 0.72);
+  border: 1px solid rgba(244, 196, 48, 0.12);
+  border-radius: 4px;
+  padding: 2rem 1.6rem;
+  text-align: center;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.facility-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--kec-green), var(--kec-gold));
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
+  transform-origin: left;
+}
+.facility-card:hover::before { transform: scaleX(1); }
+.facility-card:hover {
+  border-color: rgba(244, 196, 48, 0.28);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.4);
+  transform: translateY(-5px);
+}
+.facility-card i {
+  font-size: 2.4rem;
+  color: var(--kec-gold);
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+.facility-card:hover i { color: var(--kec-gold-light); }
+.facility-card h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--kec-gold);
+  margin-bottom: 0.6rem;
+}
+.facility-card p {
+  font-size: 0.88rem;
+  color: var(--kec-text-dim);
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   FACILITY DETAIL CARDS (campus-facilities.html)
+   ============================================================ */
+.facility-detail-card {
+  background: rgba(10, 31, 20, 0.75);
+  border: 1px solid rgba(244, 196, 48, 0.13);
+  border-radius: 4px;
+  padding: 2.25rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+.facility-detail-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--kec-green), var(--kec-gold), var(--kec-maroon));
+  transition: width 0.4s ease;
+}
+.facility-detail-card:hover::after { width: 100%; }
+.facility-detail-card:hover {
+  border-color: rgba(244, 196, 48, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   CORE VALUES CARDS (maroon accent for alternate cards)
+   ============================================================ */
+.value-card {
+  background: rgba(10, 31, 20, 0.72);
+  border: 1px solid rgba(244, 196, 48, 0.1);
+  border-radius: 4px;
+  padding: 1.6rem;
+  text-align: center;
+  transition: all 0.32s ease;
+  height: 100%;
+}
+.value-card:hover {
+  border-color: rgba(244,196,48,0.28);
+  transform: translateY(-3px);
+}
+.value-card h5 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--kec-gold);
+  margin-bottom: 0.5rem;
+}
+.value-card p {
+  font-size: 0.82rem;
+  color: var(--kec-text-muted);
+  margin: 0;
+}
+
+/* ============================================================
+   CONTACT INFO ITEMS
+   ============================================================ */
+.contact .info-item {
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: rgba(10,31,20,0.65) !important;
+  border: 1px solid rgba(244,196,48,0.12) !important;
+  border-radius: 4px !important;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+.contact .info-item:hover { border-color: rgba(244,196,48,0.3) !important; }
+.contact .info-item i {
+  font-size: 1.5rem;
+  color: var(--kec-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact .info-item h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--kec-gold);
+  margin-bottom: 0.25rem;
+}
+.contact .info-item p {
+  color: var(--kec-text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ── CONTACT FORM ────────────────────────────────────────── */
+.php-email-form input,
+.php-email-form textarea {
+  background: rgba(10,31,20,0.85) !important;
+  border: 1px solid rgba(244,196,48,0.18) !important;
+  color: var(--kec-text) !important;
+  border-radius: 3px !important;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.93rem;
+  padding: 12px 16px;
+  transition: border-color 0.28s, box-shadow 0.28s;
+}
+.php-email-form input:focus,
+.php-email-form textarea:focus {
+  border-color: rgba(244,196,48,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(244,196,48,0.08) !important;
+  outline: none;
+}
+.php-email-form input::placeholder,
+.php-email-form textarea::placeholder { color: var(--kec-text-muted); }
+.php-email-form button[type="submit"] {
+  background: linear-gradient(135deg, var(--kec-gold), var(--kec-gold-dim)) !important;
+  color: var(--kec-green-dark) !important;
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  padding: 13px 32px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  transition: all 0.28s ease !important;
+}
+.php-email-form button[type="submit"]:hover {
+  box-shadow: 0 6px 28px rgba(244,196,48,0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================================
+   ADMISSIONS STEPS
+   ============================================================ */
+.step-box {
+  background: rgba(10,31,20,0.72);
+  border: 1px solid rgba(244,196,48,0.12);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--kec-gold);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.step-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--kec-gold);
+  opacity: 0.18;
+  position: absolute;
+  top: 10px; right: 16px;
+  line-height: 1;
+}
+.step-box h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  color: var(--kec-gold);
+  margin-bottom: 0.4rem;
+}
+.step-box p {
+  font-size: 0.9rem;
+  color: var(--kec-text-dim);
+  margin: 0;
+}
+
+/* ============================================================
+   LIST STYLE
+   ============================================================ */
+ul.kec-list { list-style: none; padding: 0; margin: 0; }
+ul.kec-list li {
+  padding: 6px 0;
+  color: var(--kec-text-dim);
+  font-size: 0.9rem;
+  font-family: 'Nunito Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(244,196,48,0.05);
+}
+ul.kec-list li:last-child { border-bottom: none; }
+ul.kec-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--kec-gold);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   STAT BOXES
+   ============================================================ */
+.stat-box {
+  background: rgba(10,31,20,0.72);
+  border: 1px solid rgba(244,196,48,0.14);
+  border-radius: 4px;
+  padding: 1.4rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.stat-box:hover { border-color: rgba(244,196,48,0.32); }
+.stat-box .stat-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--kec-gold);
+  line-height: 1;
+}
+.stat-box .stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kec-text-muted);
+  margin-top: 4px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* ============================================================
+   SECTION BADGE (tech label)
+   ============================================================ */
+.section-badge {
+  display: inline-block;
+  font-family: var(--tech-font);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: rgba(244,196,48,0.08);
+  border: 1px solid rgba(244,196,48,0.22);
+  color: var(--kec-gold);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   VISION / MISSION CARDS
+   ============================================================ */
+.visi-card {
+  background: rgba(10,31,20,0.8);
+  border: 1px solid rgba(244,196,48,0.14);
+  border-radius: 4px;
+  padding: 2.25rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.visi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.visi-card.gold::before  { background: linear-gradient(90deg, var(--kec-gold), var(--kec-green)); }
+.visi-card.maroon::before{ background: linear-gradient(90deg, var(--kec-maroon), var(--kec-gold)); }
+
+/* ============================================================
+   MOTTO OVERLAY BOX
+   ============================================================ */
+.motto-box {
+  position: absolute;
+  bottom: 20px; left: -20px;
+  background: rgba(6,19,12,0.96);
+  border: 1px solid rgba(244,196,48,0.22);
+  border-left: 3px solid var(--kec-maroon);
+  padding: 1rem 1.4rem;
+  max-width: 260px;
+  border-radius: 0 4px 4px 0;
+}
+.motto-box .motto-label {
+  font-family: var(--tech-font);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: var(--kec-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.motto-box .motto-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.88rem;
+  color: rgba(238,245,240,0.85);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================================
+   CORNER DECORATIONS (image frames)
+   ============================================================ */
+.corner-frame { position: relative; }
+.corner-frame .c-tl {
+  position: absolute; top: -6px; left: -6px;
+  width: 44px; height: 44px;
+  border-top: 2px solid var(--kec-gold);
+  border-left: 2px solid var(--kec-gold);
+}
+.corner-frame .c-br {
+  position: absolute; bottom: -6px; right: -6px;
+  width: 44px; height: 44px;
+  border-bottom: 2px solid var(--kec-maroon);
+  border-right: 2px solid var(--kec-maroon);
+}
+
+/* ============================================================
+   CTA STRIP
+   ============================================================ */
+.cta-strip {
+  background:
+    linear-gradient(135deg,
+      rgba(11,107,58,0.14) 0%,
+      rgba(122,30,44,0.12) 60%,
+      rgba(108,117,125,0.08) 100%
+    );
+  border-top:    1px solid rgba(244,196,48,0.14);
+  border-bottom: 1px solid rgba(244,196,48,0.14);
+  padding: 64px 0;
+}
+
+/* ============================================================
+   STUDENT LIFE CARDS
+   ============================================================ */
+.life-card {
+  background: rgba(10,31,20,0.72);
+  border: 1px solid rgba(244,196,48,0.12);
+  border-radius: 4px;
+  padding: 2.25rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+.life-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.life-card.lc-gold::before   { background: var(--kec-gold); }
+.life-card.lc-maroon::before { background: linear-gradient(90deg, var(--kec-maroon), var(--kec-maroon-mid)); }
+.life-card.lc-green::before  { background: var(--kec-green); }
+.life-card.lc-grey::before   { background: var(--kec-grey); }
+.life-card:hover {
+  border-color: rgba(244,196,48,0.28);
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: #050f09 !important;
+  border-top: 1px solid rgba(244,196,48,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3-colour top bar */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--kec-green) 0%,
+    var(--kec-gold) 40%,
+    var(--kec-maroon) 72%,
+    var(--kec-grey) 100%
+  );
+}
+
+.footer .footer-top { padding: 60px 0 40px; }
+
+.footer .logo-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--kec-gold);
+  letter-spacing: 0.04em;
+}
+.footer .footer-motto {
+  font-family: var(--tech-font);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--kec-green-mid);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+.footer h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--kec-gold);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(244,196,48,0.1);
+}
+
+.footer .footer-links ul { list-style: none; padding: 0; margin: 0; }
+.footer .footer-links ul li { padding: 5px 0; }
+.footer .footer-links ul a {
+  color: rgba(238,245,240,0.5);
+  font-size: 0.88rem;
+  font-family: 'Nunito Sans', sans-serif;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer .footer-links ul a::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--kec-grey);
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+.footer .footer-links ul a:hover {
+  color: var(--kec-gold);
+  padding-left: 4px;
+}
+.footer .footer-links ul a:hover::before { background: var(--kec-gold); }
+
+.footer .footer-contact p {
+  color: rgba(238,245,240,0.5);
+  font-size: 0.88rem;
+  font-family: 'Nunito Sans', sans-serif;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.footer .footer-contact i { color: var(--kec-gold); flex-shrink: 0; margin-top: 2px; }
+
+.footer .footer-bottom {
+  border-top: 1px solid rgba(244,196,48,0.08);
+  padding: 20px 0;
+  background: rgba(0,0,0,0.2);
+}
+.footer .copyright {
+  color: rgba(238,245,240,0.3);
+  font-size: 0.78rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.footer .copyright span { color: var(--kec-gold-dim); }
+.footer .legal-links a, .footer .credits {
+  color: rgba(238,245,240,0.3);
+  font-size: 0.75rem;
+  font-family: 'Nunito Sans', sans-serif;
+  transition: color 0.25s;
+}
+.footer .legal-links a:hover { color: var(--kec-gold); }
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--kec-bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+#preloader::before {
+  content: '';
+  width: 50px; height: 50px;
+  border: 2px solid rgba(244,196,48,0.15);
+  border-top: 2px solid var(--kec-gold);
+  border-right: 2px solid var(--kec-maroon);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+#preloader::after {
+  content: 'KENRAMA EDUCATION CENTRE';
+  font-family: var(--tech-font);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  color: rgba(244,196,48,0.5);
+  text-transform: uppercase;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   SCROLL TOP
+   ============================================================ */
+.scroll-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 42px; height: 42px;
+  background: var(--kec-gold) !important;
+  color: var(--kec-green-dark) !important;
+  border-radius: 4px !important;
+  opacity: 0; visibility: hidden;
+  transition: all 0.35s ease;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(244,196,48,0.3);
+}
+.scroll-top.active { opacity: 1; visibility: visible; }
+.scroll-top:hover {
+  background: var(--kec-gold-light) !important;
+  box-shadow: 0 6px 24px rgba(244,196,48,0.5) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   GLOBAL BUTTON OVERRIDES
+   ============================================================ */
+.btn-primary, .btn-get-started {
+  background: linear-gradient(135deg, var(--kec-gold), var(--kec-gold-dim)) !important;
+  color: var(--kec-green-dark) !important;
+  border: none !important;
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  padding: 11px 26px !important;
+  border-radius: 4px !important;
+  transition: all 0.28s ease !important;
+}
+.btn-primary:hover, .btn-get-started:hover {
+  box-shadow: 0 6px 28px rgba(244,196,48,0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================================
+   SWIPER / GLIGHTBOX
+   ============================================================ */
+.swiper-button-next, .swiper-button-prev { color: var(--kec-gold) !important; }
+.swiper-pagination-bullet-active { background: var(--kec-gold) !important; }
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero-stats { max-width: 100%; }
+  .hero-stat { padding: 10px 8px; }
+  .hero-stat .number { font-size: 1.35rem; }
+  .motto-box { position: static; margin-top: 1rem; max-width: 100%; border-radius: 4px; }
+}
+
+/* ============================================================
+   NAVBAR — SOCIAL MEDIA ICONS
+   ============================================================ */
+.nav-socials {
+  gap: 2px;
+  padding: 0 8px;
+  border-left: 1px solid rgba(244, 196, 48, 0.15);
+  border-right: 1px solid rgba(244, 196, 48, 0.15);
+  margin: 0 6px;
+}
+
+.nav-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: rgba(238, 245, 240, 0.55);
+  font-size: 0.88rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+/* Per-platform hover colours — feels alive and branded */
+.nav-social-link[title="Facebook"]:hover {
+  color: #1877F2;
+  background: rgba(24, 119, 242, 0.12);
+  border-color: rgba(24, 119, 242, 0.3);
+  transform: translateY(-2px);
+}
+.nav-social-link[title="WhatsApp"]:hover {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.3);
+  transform: translateY(-2px);
+}
+.nav-social-link[title="Instagram"]:hover {
+  color: #E1306C;
+  background: rgba(225, 48, 108, 0.1);
+  border-color: rgba(225, 48, 108, 0.25);
+  transform: translateY(-2px);
+}
+.nav-social-link[title="X / Twitter"]:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.nav-social-link[title="YouTube"]:hover {
+  color: #FF0000;
+  background: rgba(255, 0, 0, 0.1);
+  border-color: rgba(255, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+.nav-social-link[title="TikTok"]:hover {
+  color: #69C9D0;
+  background: rgba(105, 201, 208, 0.1);
+  border-color: rgba(105, 201, 208, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Mobile: show socials in the mobile nav menu at the bottom */
+@media (max-width: 1199px) {
+  .nav-socials {
+    display: none !important; /* hidden in header on mobile */
+  }
+
+  /* Inject socials at the bottom of mobile nav */
+  .mobile-nav-socials {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 16px 0 8px;
+    border-top: 1px solid rgba(244, 196, 48, 0.1);
+    margin-top: 12px;
+  }
+  .mobile-nav-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(244, 196, 48, 0.2) !important;
+    color: rgba(238, 245, 240, 0.65) !important;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    background: rgba(10, 31, 20, 0.5);
+    padding: 0 !important;
+  }
+  .mobile-nav-socials a:hover {
+    background: rgba(244, 196, 48, 0.1);
+    color: var(--kec-gold) !important;
+    border-color: rgba(244, 196, 48, 0.45) !important;
+  }
+}
+
+/* ============================================================
+   FOOTER SOCIAL ICONS
+   ============================================================ */
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 196, 48, 0.18);
+  color: rgba(238, 245, 240, 0.5);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  background: rgba(10, 31, 20, 0.4);
+}
+.footer-social:hover {
+  color: var(--kec-gold);
+  border-color: rgba(244, 196, 48, 0.5);
+  background: rgba(244, 196, 48, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(244, 196, 48, 0.2);
+}
