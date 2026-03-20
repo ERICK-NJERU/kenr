@@ -111,14 +111,15 @@ a:hover { color: var(--kec-gold-light); }
 .kec-label {
   display: inline-block;
   font-family: var(--tech-font);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--kec-green-mid);
-  border-left: 3px solid var(--kec-green);
-  padding-left: 10px;
-  margin-bottom: 0.85rem;
+  border-left: 4px solid var(--kec-green);
+  padding-left: 14px;
+  margin-bottom: 0.9rem;
   line-height: 1;
+  font-weight: 600;
 }
 
 .light-background {
@@ -774,16 +775,16 @@ section { position: relative; z-index: 1; }
 .facility-card:hover i { color: var(--kec-gold-light); }
 .facility-card h4 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--kec-gold);
   margin-bottom: 0.6rem;
 }
 .facility-card p {
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   color: var(--kec-text-dim);
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ============================================================
@@ -832,14 +833,16 @@ section { position: relative; z-index: 1; }
 }
 .value-card h5 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 1.35rem;
   color: var(--kec-gold);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 .value-card p {
-  font-size: 0.82rem;
+  font-size: 1.05rem;
   color: var(--kec-text-muted);
   margin: 0;
+  line-height: 1.75;
 }
 
 /* ============================================================
@@ -1511,55 +1514,89 @@ section { padding-top: 60px !important; padding-bottom: 60px !important; }
 section[style*="padding:80px"] { padding: 60px 0 !important; }
 section[style*="padding:60px"] { padding: 44px 0 !important; }
 
-/* Bigger section headings */
-.section-badge { font-size: 0.65rem; }
+/* ── GLOBAL BODY & PARAGRAPH ───────────────────────────── */
+body { font-size: 18px !important; }
+p    { font-size: 1.08rem !important; line-height: 1.85 !important; }
+
+/* ── SECTION HEADINGS ───────────────────────────────────── */
+.section-badge { font-size: 0.72rem; }
 
 section h2,
 .section h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+  font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
 }
-section h3 { font-size: clamp(1.1rem, 2vw, 1.5rem) !important; }
-section p  { font-size: 0.98rem; }
+section h3 { font-size: clamp(1.4rem, 2.5vw, 2rem) !important; }
+section h4 { font-size: clamp(1.15rem, 2vw, 1.5rem) !important; }
+section h5 { font-size: clamp(1.05rem, 1.8vw, 1.35rem) !important; }
 
-/* Facility cards — more padding, bigger icon */
-.facility-card { padding: 2.2rem 1.8rem; }
-.facility-card i { font-size: 2.8rem; }
-.facility-card h4 { font-size: 1.15rem; }
-.facility-card p  { font-size: 0.92rem; }
+/* ── FACILITY CARDS ─────────────────────────────────────── */
+.facility-card { padding: 2.4rem 2rem; }
+.facility-card i  { font-size: 3.2rem; }
+.facility-card h4 { font-size: 1.4rem !important; }
+.facility-card p  { font-size: 1.05rem !important; }
 
-/* Value cards — bigger */
-.value-card { padding: 1.8rem; }
-.value-card h5 { font-size: 1.05rem; }
-.value-card p  { font-size: 0.88rem; }
+/* ── VALUE CARDS (worst offender — fix hard) ────────────── */
+.value-card { padding: 2rem 1.8rem; }
+.value-card div[style*="font-size:2rem"] { font-size: 2.8rem !important; }
+.value-card h5 { font-size: 1.35rem !important; font-weight: 700 !important; }
+.value-card p  { font-size: 1.05rem !important; line-height: 1.75 !important; color: rgba(238,245,240,0.72) !important; }
 
-/* Stat boxes — bigger numbers */
-.stat-box .stat-number { font-size: 2.2rem; }
-.stat-box .stat-label  { font-size: 0.78rem; }
+/* ── STAT BOXES ─────────────────────────────────────────── */
+.stat-box .stat-number { font-size: 2.6rem !important; }
+.stat-box .stat-label  { font-size: 0.88rem !important; }
 
-/* Hero stats bar — bigger */
-.hero-stat .number { font-size: 1.8rem !important; }
-.hero-stat .label  { font-size: 0.75rem; }
+/* ── HERO STATS ─────────────────────────────────────────── */
+.hero-stat .number { font-size: 2rem !important; }
+.hero-stat .label  { font-size: 0.82rem !important; }
 
-/* Bigger buttons across site */
+/* ── BUTTONS ────────────────────────────────────────────── */
 .btn-primary-kec,
 .btn-outline-kec {
-  font-size: 1rem !important;
-  padding: 14px 34px !important;
+  font-size: 1.05rem !important;
+  padding: 15px 36px !important;
 }
 
-/* Bigger panel items in hero */
-.pi-value { font-size: 0.95rem !important; }
-.pi-label { font-size: 0.75rem !important; }
+/* ── HERO PANEL ─────────────────────────────────────────── */
+.pi-value { font-size: 1.05rem !important; }
+.pi-label { font-size: 0.82rem !important; }
 
-/* Inner page content bigger */
-.page-title h1 { font-size: clamp(2rem, 5vw, 3.2rem) !important; }
-.page-title p   { font-size: 1.05rem !important; }
+/* ── KEC LIST ───────────────────────────────────────────── */
+ul.kec-list li { font-size: 1.05rem !important; }
 
-/* Bigger footer text */
-.footer p, .footer .footer-links ul a,
-.footer .footer-contact p { font-size: 0.92rem; }
-.footer h4 { font-size: 1.05rem; }
-.footer .logo-name { font-size: 1.1rem !important; }
+/* ── INNER PAGES ────────────────────────────────────────── */
+.page-title h1 { font-size: clamp(2.4rem, 5.5vw, 3.8rem) !important; }
+.page-title p  { font-size: 1.15rem !important; }
+.page-title .breadcrumbs a,
+.page-title .breadcrumbs .current { font-size: 0.92rem !important; }
+
+/* ── FACILITY DETAIL CARDS ──────────────────────────────── */
+.facility-detail-card h3 { font-size: 1.4rem !important; }
+.facility-detail-card p  { font-size: 1.05rem !important; }
+
+/* ── ADMISSIONS STEPS ───────────────────────────────────── */
+.step-box h4 { font-size: 1.2rem !important; }
+.step-box p  { font-size: 1rem !important; }
+
+/* ── TESTIMONIALS ───────────────────────────────────────── */
+.testi-text { font-size: 1.05rem !important; }
+.testi-name { font-size: 1.05rem !important; }
+.testi-role { font-size: 0.82rem !important; }
+
+/* ── TEAM ───────────────────────────────────────────────── */
+.team-info h4   { font-size: 1.15rem !important; }
+.team-info span { font-size: 0.85rem !important; }
+
+/* ── DIRECTOR ───────────────────────────────────────────── */
+.director-quote-mark { font-size: 6rem; }
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+.footer p,
+.footer .footer-links ul a,
+.footer .footer-contact p { font-size: 1rem !important; }
+.footer h4 { font-size: 1.2rem !important; }
+.footer .logo-name { font-size: 1.25rem !important; }
+.footer .copyright { font-size: 0.88rem !important; }
+
 
 /* ============================================================
    REMOVE OLD OVERRIDES that were fighting the new hero layout
@@ -1583,4 +1620,264 @@ h1.hero-giant-name,
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
+}
+
+/* ============================================================
+   GALLERY — AUTO-SCROLLING STRIP
+   ============================================================ */
+.gallery-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+}
+.gallery-track-wrapper::before,
+.gallery-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.gallery-track-wrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, #06130c, transparent);
+}
+.gallery-track-wrapper::after {
+  right: 0;
+  background: linear-gradient(90deg, transparent, #06130c);
+}
+
+.gallery-track {
+  display: flex;
+  gap: 12px;
+  animation: galleryScroll 35s linear infinite;
+  width: max-content;
+}
+.gallery-track:hover { animation-play-state: paused; }
+
+@keyframes galleryScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.gallery-item {
+  flex-shrink: 0;
+  width: 300px;
+  height: 200px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(244,196,48,0.14);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.gallery-item:hover {
+  border-color: rgba(244,196,48,0.45);
+  transform: scale(1.03);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s;
+  filter: brightness(0.88) saturate(0.9);
+}
+.gallery-item:hover img {
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* ============================================================
+   DIRECTOR'S MESSAGE
+   ============================================================ */
+.director-photo-wrap {
+  position: relative;
+  display: inline-block;
+}
+.director-photo {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 4px;
+  border: 2px solid rgba(244,196,48,0.25);
+  filter: brightness(0.9) saturate(0.85);
+  display: block;
+  margin: 0 auto;
+}
+.director-badge {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--kec-gold), var(--kec-gold-dim));
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(244,196,48,0.35);
+}
+.director-title {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kec-green-dark);
+  font-weight: 700;
+}
+.director-name {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(6,19,12,0.75);
+  font-family: 'Nunito Sans', sans-serif;
+  margin-top: 2px;
+}
+.director-quote-mark {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 5rem;
+  line-height: 0.8;
+  color: var(--kec-gold);
+  opacity: 0.35;
+  margin-bottom: -1rem;
+  user-select: none;
+}
+
+/* ============================================================
+   TEAM CARDS
+   ============================================================ */
+.team-card {
+  background: rgba(10,31,20,0.72);
+  border: 1px solid rgba(244,196,48,0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  text-align: center;
+}
+.team-card:hover {
+  border-color: rgba(244,196,48,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.team-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+}
+.team-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(0.8);
+  transition: all 0.4s ease;
+}
+.team-card:hover .team-img-wrap img {
+  filter: brightness(0.7) saturate(0.7);
+  transform: scale(1.05);
+}
+.team-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6,19,12,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.team-card:hover .team-overlay { opacity: 1; }
+.team-socials { display: flex; gap: 10px; }
+.team-socials a {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,196,48,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--kec-gold);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.team-socials a:hover {
+  background: var(--kec-gold);
+  color: var(--kec-green-dark);
+}
+.team-info {
+  padding: 1.1rem 1rem;
+  border-top: 2px solid var(--kec-gold);
+}
+.team-info h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  color: var(--kec-gold);
+  margin-bottom: 0.2rem;
+}
+.team-info span {
+  font-size: 0.78rem;
+  color: rgba(238,245,240,0.5);
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonial-card {
+  background: rgba(10,31,20,0.72);
+  border: 1px solid rgba(244,196,48,0.12);
+  border-radius: 4px;
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  transition: all 0.35s ease;
+  border-top: 3px solid var(--kec-gold);
+}
+.testimonial-card:nth-child(2) { border-top-color: var(--kec-green); }
+.testimonial-card:nth-child(3) { border-top-color: var(--kec-maroon); }
+.testimonial-card:nth-child(4) { border-top-color: var(--kec-grey); }
+.testimonial-card:hover {
+  border-color: rgba(244,196,48,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.35);
+}
+.testi-quote {
+  font-size: 2.5rem;
+  color: var(--kec-gold);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.testi-text {
+  color: rgba(238,245,240,0.78) !important;
+  font-size: 0.93rem !important;
+  line-height: 1.8 !important;
+  font-style: italic;
+  margin-bottom: 1.5rem !important;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244,196,48,0.1);
+}
+.testi-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--kec-green-dark);
+  flex-shrink: 0;
+}
+.testi-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--kec-gold);
+  font-weight: 700;
+}
+.testi-role {
+  font-size: 0.75rem;
+  color: rgba(238,245,240,0.45);
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
