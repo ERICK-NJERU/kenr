@@ -140,11 +140,12 @@ a:hover { color: var(--kec-gold-light); }
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(244, 196, 48, 0.18);
-  padding: 6px 0 !important;
+  padding: 10px 0 !important;
+  min-height: 100px;
   z-index: 9999;
   box-shadow:
     0 4px 24px rgba(0,0,0,0.55),
-    0 1px 0 rgba(122, 30, 44, 0.25) inset;   /* maroon under-glow */
+    0 1px 0 rgba(122, 30, 44, 0.25) inset;
 }
 
 .scrolled .header, .header.scrolled {
@@ -161,23 +162,25 @@ a:hover { color: var(--kec-gold-light); }
   align-items: center;
   gap: 14px;
   text-decoration: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
-/* BIG commanding logo */
+/* BIG commanding logo — large but contained within navbar */
 .header .logo img {
-  height: 72px !important;
-  max-height: 72px !important;
+  height: 80px !important;
+  max-height: 80px !important;
   width: auto;
   filter:
-    drop-shadow(0 0 10px rgba(244, 196, 48, 0.55))
-    drop-shadow(0 0 24px rgba(11, 107, 58, 0.35));
+    drop-shadow(0 0 14px rgba(244, 196, 48, 0.65))
+    drop-shadow(0 0 32px rgba(11, 107, 58, 0.4));
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 .header .logo img:hover {
   filter:
-    drop-shadow(0 0 18px rgba(244, 196, 48, 0.9))
-    drop-shadow(0 0 36px rgba(11, 107, 58, 0.5));
-  transform: scale(1.04);
+    drop-shadow(0 0 24px rgba(244, 196, 48, 0.95))
+    drop-shadow(0 0 48px rgba(11, 107, 58, 0.6));
+  transform: scale(1.05);
 }
 
 /* School name text next to logo */
@@ -208,10 +211,10 @@ a:hover { color: var(--kec-gold-light); }
   color: var(--kec-green-dark) !important;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 700;
-  font-size: 0.82rem;
-  padding: 9px 20px;
+  font-size: 0.95rem;
+  padding: 11px 22px;
   border-radius: 3px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   border: none;
   text-decoration: none;
   transition: all 0.28s ease;
@@ -228,11 +231,11 @@ a:hover { color: var(--kec-gold-light); }
 @media (min-width: 1200px) {
   .navmenu a, .navmenu a:focus {
     font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.88rem;
-    letter-spacing: 0.03em;
-    color: rgba(238, 245, 240, 0.8) !important;
-    padding: 8px 14px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: rgba(238, 245, 240, 0.85) !important;
+    padding: 10px 16px;
     position: relative;
     transition: color 0.25s ease;
   }
@@ -270,8 +273,8 @@ a:hover { color: var(--kec-gold-light); }
 /* ── MOBILE NAV ──────────────────────────────────────────── */
 @media (max-width: 1199px) {
   .header .logo img {
-    height: 56px !important;
-    max-height: 56px !important;
+    height: 64px !important;
+    max-height: 64px !important;
   }
   body.mobile-nav-active .navmenu {
     position: fixed;
@@ -312,42 +315,42 @@ a:hover { color: var(--kec-gold-light); }
 }
 
 /* ============================================================
-   HERO SECTION — School building background
+   HERO SECTION
    ============================================================ */
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   overflow: hidden;
-  padding: 130px 0 90px;
+  padding: 0;
 }
 
-/* School admin block background image — real photo feel via unsplash */
+/* School admin block background image */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80');
+  background-image: url('../img/hero-building.jpg');
   background-size: cover;
-  background-position: center 40%;
+  background-position: center center;
   z-index: 0;
 }
 
-/* Dark overlay so text is readable — layered: dark green base + maroon accent at bottom */
+/* Clean neutral dark overlay — no green tint */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
-      160deg,
-      rgba(6, 19, 12, 0.88) 0%,
-      rgba(10, 31, 20, 0.82) 40%,
-      rgba(60, 10, 18, 0.55) 100%
+      to right,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.60) 55%,
+      rgba(0, 0, 0, 0.45) 100%
     );
 }
 
-/* Gold + green gradient rim at bottom */
+/* 3-colour bottom rim */
 .hero::after {
   content: '';
   position: absolute;
@@ -357,36 +360,135 @@ a:hover { color: var(--kec-gold-light); }
   z-index: 5;
 }
 
-.hero .container { position: relative; z-index: 3; }
-
-/* ── HERO TYPOGRAPHY ─────────────────────────────────────── */
-.hero h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--kec-gold);
-  text-shadow:
-    0 2px 12px rgba(0,0,0,0.6),
-    0 0 40px rgba(244, 196, 48, 0.25);
-  margin-bottom: 0.4rem;
+/* ── HERO INNER LAYOUT ────────────────────────────────────── */
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 110px 3vw 40px;   /* tight side margins, clears navbar top */
 }
 
+/* ── GIANT TITLE BLOCK ────────────────────────────────────── */
+.hero-title-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0 16px;
+  position: relative;
+}
+
+/* Remove the old pseudo-element background logo */
+.hero-title-block::before {
+  display: none;
+}
+
+.hero-giant-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 4.2vw, 5rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  color: var(--kec-gold);
+  text-shadow:
+    0 0 40px rgba(244, 196, 48, 0.6),
+    0 0 80px rgba(244, 196, 48, 0.2),
+    0 4px 20px rgba(0, 0, 0, 0.9);
+  margin: 0 0 0.15em 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+}
+
+/* Faint logo sits BELOW name+slogan together */
+.hero-logo-watermark {
+  display: block;
+  width: clamp(180px, 28vw, 420px);
+  height: clamp(180px, 28vw, 420px);
+  object-fit: contain;
+  opacity: 0.13;
+  margin: 1.2em auto 0;
+  filter: grayscale(20%) brightness(1.5);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-giant-slogan {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.65rem, 1.4vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.slogan-dash {
+  display: inline-block;
+  width: clamp(30px, 5vw, 90px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--kec-gold));
+  border-radius: 2px;
+}
+.slogan-dash:last-child {
+  background: linear-gradient(90deg, var(--kec-gold), transparent);
+}
+
+/* ── BOTTOM ROW ───────────────────────────────────────────── */
+.hero-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-bottom-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-bottom-right {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .hero-bottom-right { width: 100%; }
+  .hero-inner { padding: 100px 4vw 32px; }
+  .hero-giant-name { letter-spacing: 0.04em; }
+}
+
+/* ── HERO SUBTITLE (tagline below giant name area) ────────── */
 .hero .school-subtitle {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  font-size: clamp(0.78rem, 1.4vw, 0.92rem);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #6ee89a;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero p.lead-text {
   font-size: 1.05rem;
-  color: rgba(238, 245, 240, 0.82);
-  max-width: 520px;
+  color: rgba(238, 245, 240, 0.85);
   line-height: 1.85;
+  max-width: 560px;
 }
 
 /* ── HERO BUTTONS ────────────────────────────────────────── */
@@ -1212,7 +1314,7 @@ ul.kec-list li::before {
    RESPONSIVE TWEAKS
    ============================================================ */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2rem; }
+  .hero-giant-name { font-size: clamp(1rem, 4vw, 2rem) !important; letter-spacing: 0.03em; white-space: nowrap; }
   .hero-stats { max-width: 100%; }
   .hero-stat { padding: 10px 8px; }
   .hero-stat .number { font-size: 1.35rem; }
@@ -1343,4 +1445,142 @@ ul.kec-list li::before {
   background: rgba(244, 196, 48, 0.1);
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(244, 196, 48, 0.2);
+}
+
+/* ============================================================
+   NAVBAR SITENAME — FULL NAME, NO BREAK
+   ============================================================ */
+.header .logo .sitename {
+  white-space: nowrap;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.1 !important;
+}
+.header .logo .sitename small {
+  display: block;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.55em;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  color: rgba(244, 196, 48, 0.52) !important;
+  text-transform: uppercase;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* Shrink slightly on medium screens so it doesn't overflow */
+@media (max-width: 1280px) {
+  .header .logo .sitename { font-size: 0.92rem !important; }
+}
+@media (max-width: 1100px) {
+  .header .logo .sitename { display: none !important; }
+}
+
+/* ============================================================
+   FOOTER LOGO NAME — FULL NAME
+   ============================================================ */
+.footer .logo-name {
+  font-size: 1rem !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   HERO BACKGROUND — full building centered
+   ============================================================ */
+.hero-bg {
+  background-position: center center !important;
+}
+
+/* ============================================================
+   SITE-WIDE: TIGHTER MARGINS + BIGGER CONTENT
+   ============================================================ */
+
+/* Override Bootstrap container to be wider / tighter */
+.container,
+.container-xl,
+.container-fluid {
+  padding-left: 2.5vw !important;
+  padding-right: 2.5vw !important;
+  max-width: 1500px !important;
+}
+
+/* Sections — less vertical padding so content is denser */
+section { padding-top: 60px !important; padding-bottom: 60px !important; }
+section[style*="padding:80px"] { padding: 60px 0 !important; }
+section[style*="padding:60px"] { padding: 44px 0 !important; }
+
+/* Bigger section headings */
+.section-badge { font-size: 0.65rem; }
+
+section h2,
+.section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+}
+section h3 { font-size: clamp(1.1rem, 2vw, 1.5rem) !important; }
+section p  { font-size: 0.98rem; }
+
+/* Facility cards — more padding, bigger icon */
+.facility-card { padding: 2.2rem 1.8rem; }
+.facility-card i { font-size: 2.8rem; }
+.facility-card h4 { font-size: 1.15rem; }
+.facility-card p  { font-size: 0.92rem; }
+
+/* Value cards — bigger */
+.value-card { padding: 1.8rem; }
+.value-card h5 { font-size: 1.05rem; }
+.value-card p  { font-size: 0.88rem; }
+
+/* Stat boxes — bigger numbers */
+.stat-box .stat-number { font-size: 2.2rem; }
+.stat-box .stat-label  { font-size: 0.78rem; }
+
+/* Hero stats bar — bigger */
+.hero-stat .number { font-size: 1.8rem !important; }
+.hero-stat .label  { font-size: 0.75rem; }
+
+/* Bigger buttons across site */
+.btn-primary-kec,
+.btn-outline-kec {
+  font-size: 1rem !important;
+  padding: 14px 34px !important;
+}
+
+/* Bigger panel items in hero */
+.pi-value { font-size: 0.95rem !important; }
+.pi-label { font-size: 0.75rem !important; }
+
+/* Inner page content bigger */
+.page-title h1 { font-size: clamp(2rem, 5vw, 3.2rem) !important; }
+.page-title p   { font-size: 1.05rem !important; }
+
+/* Bigger footer text */
+.footer p, .footer .footer-links ul a,
+.footer .footer-contact p { font-size: 0.92rem; }
+.footer h4 { font-size: 1.05rem; }
+.footer .logo-name { font-size: 1.1rem !important; }
+
+/* ============================================================
+   REMOVE OLD OVERRIDES that were fighting the new hero layout
+   ============================================================ */
+/* hero h1 reset removed */
+
+/* ============================================================
+   FORCE HERO GIANT NAME — override everything
+   ============================================================ */
+h1.hero-giant-name,
+.hero-giant-name {
+  font-family: 'Orbitron', sans-serif !important;
+  font-size: clamp(1.4rem, 4.2vw, 5rem) !important;
+  font-weight: 900 !important;
+  color: var(--kec-gold) !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.1 !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
